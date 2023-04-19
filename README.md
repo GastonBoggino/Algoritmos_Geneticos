@@ -9,9 +9,9 @@ Integrantes:
     García, Narela
     
     
-<h4>Enunciado</h4>
+<h2>Enunciado</h2>
 
-  <h2>Hacer un programa que utilice un Algoritmo Genético Canónico para buscar un máximo de la función:<h2>
+  <h4>Hacer un programa que utilice un Algoritmo Genético Canónico para buscar un máximo de la función:<h4>
   
     f(x) =(xcoef)2 en el dominio [0 ,230-1]
     
