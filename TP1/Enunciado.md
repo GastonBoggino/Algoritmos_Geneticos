@@ -13,7 +13,9 @@ Hacer un programa que utilice un Algoritmo Genético Canónico para buscar un m�
     
 $$f(x) = \left(\frac{x}{\text{coef}}\right)^2$$
 
-en el dominio [0, $2^{30}$ -1], donde coef = $2^{30}$ -1.
+en el dominio [0, $2^{30}$ -1] 
+
+donde coef = $2^{30}$ -1.
 
 Teniendo en cuenta los siguientes datos:
   - Probabilidad de Crossover = 0.75
