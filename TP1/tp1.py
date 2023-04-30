@@ -12,6 +12,19 @@ cromosomasFuncObj=[]
 cromosomasFitness=[]
 nueva_generacion=[]
 maxFuncObj=0
+elitismo=True
+cantCromosomasElite=2
+
+def aplicarElitismo():
+  global cromosomas, cromosomasFitness
+  cromosomasElite=[]
+  for i in range(cantCromosomasElite):
+    #seleccionar cromosoma con mayor fitness
+    indice_maximo =cromosomasFitness.index(max(cromosomasFitness))
+    #cromosoma=cromosomas.pop(indice_maximo)
+    cromosomasElite.append(cromosomas[indice_maximo])
+  return(cromosomasElite)
+
 
 def seleccionParejas():
     parejas = []  # Lista que almacenará las dos parejas
@@ -95,6 +108,7 @@ def iniciar():
     cromosomas=nueva_generacion
     print(f'GENERACION {i+1}')
     print(f'Cromosomas, {cromosomas}')
+    print(f'maximo cromosomas: {max(cromosomas)} ')
     print(f'valores, {cromosomasValor}')
     print(f'Funcion objetivo, {cromosomasFuncObj}')
     print(f'Funcion Fitness, {cromosomasFitness}')
@@ -102,14 +116,27 @@ def iniciar():
     nueva_generacion=[]
     cromosomasValor=[]
     cromosomasFuncObj=[]
-    for i in range(int(poblacion/2)):
-      #Seleccion de parejas  
-      parejas=seleccionParejas()
-      #Generar nueva generacion
-      result= nuevaGenracion(parejas[0], parejas[1])
-      nueva_generacion.append(result[0])
-      nueva_generacion.append(result[1])
-    calcularValores(nueva_generacion)
+    if (elitismo):
+      cromosomasElite= aplicarElitismo();
+      nueva_generacion.append(cromosomasElite[0])
+      nueva_generacion.append(cromosomasElite[1])
+      for i in range(int((poblacion-cantCromosomasElite)/2)):
+        #Seleccion de parejas  
+        parejas=seleccionParejas()
+        #Generar nueva generacion
+        result= nuevaGenracion(parejas[0], parejas[1])
+        nueva_generacion.append(result[0])
+        nueva_generacion.append(result[1])
+      calcularValores(nueva_generacion)
+    else:
+      for i in range(int(poblacion/2)):
+        #Seleccion de parejas  
+        parejas=seleccionParejas()
+        #Generar nueva generacion
+        result= nuevaGenracion(parejas[0], parejas[1])
+        nueva_generacion.append(result[0])
+        nueva_generacion.append(result[1])
+      calcularValores(nueva_generacion)
       
 
 
